@@ -34,6 +34,9 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
+  // Over the dark sparkles hero (home page, at the top) use light text.
+  const onDark = pathname === "/" && !scrolled;
+
   return (
     <header
       className={cn(
@@ -46,7 +49,10 @@ export function SiteHeader() {
       <div className="mx-auto flex h-[72px] max-w-8xl items-center justify-between px-6 lg:px-10">
         <Link
           href="/"
-          className="font-display text-lg font-semibold tracking-tight"
+          className={cn(
+            "font-display text-lg font-semibold tracking-tight transition-colors",
+            onDark && "text-white"
+          )}
         >
           Home Visual Studio
         </Link>
@@ -57,8 +63,12 @@ export function SiteHeader() {
             <Link
               href="/szolgaltatasok"
               className={cn(
-                "inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                isActive("/szolgaltatasok") && "text-foreground"
+                "inline-flex items-center gap-1 text-sm font-medium transition-colors",
+                onDark
+                  ? "text-white/70 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground",
+                isActive("/szolgaltatasok") &&
+                  (onDark ? "text-white" : "text-foreground")
               )}
             >
               Szolgáltatások
@@ -101,8 +111,11 @@ export function SiteHeader() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                isActive(link.href) && "text-foreground"
+                "text-sm font-medium transition-colors",
+                onDark
+                  ? "text-white/70 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground",
+                isActive(link.href) && (onDark ? "text-white" : "text-foreground")
               )}
             >
               {link.label}
@@ -111,7 +124,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="hidden sm:inline-flex">
+          <Button
+            asChild
+            size="sm"
+            className={cn(
+              "hidden sm:inline-flex",
+              onDark && "bg-white text-black hover:bg-white/90"
+            )}
+          >
             <Link href="/kapcsolat">
               Ajánlatot kérek
               <ArrowRight />
@@ -123,7 +143,10 @@ export function SiteHeader() {
             aria-label={open ? "Menü bezárása" : "Menü megnyitása"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground md:hidden"
+            className={cn(
+              "inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden",
+              onDark ? "text-white" : "text-foreground"
+            )}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
