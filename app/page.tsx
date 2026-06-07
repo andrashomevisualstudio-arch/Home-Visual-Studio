@@ -1,5 +1,8 @@
 import { Hero } from "@/components/hero";
 import { ServiceBand } from "@/components/service-band";
+import { Capabilities } from "@/components/capabilities";
+import { HowItWorks } from "@/components/how-it-works";
+import { Founder } from "@/components/founder";
 import { ContactForm } from "@/components/contact-form";
 import { services } from "@/lib/services";
 
@@ -7,6 +10,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+
+      {/* Factual capabilities — true credibility from day one */}
+      <Capabilities />
 
       {/* Full-width service bands */}
       <section aria-label="Szolgáltatások" className="mt-6 flex flex-col gap-1">
@@ -24,8 +30,12 @@ export default function HomePage() {
         ))}
       </section>
 
+      {/* Process + founder = honest trust building before the final CTA */}
+      <HowItWorks />
+      <Founder />
+
       {/* Get in touch */}
-      <section id="kapcsolat" className="mt-1 bg-surface py-20 lg:py-28">
+      <section id="kapcsolat" className="bg-surface py-20 lg:py-28">
         <div className="mx-auto grid max-w-8xl gap-12 px-6 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:px-10">
           <div>
             <h2 className="display-xl text-[clamp(2.5rem,6vw,5rem)] uppercase">

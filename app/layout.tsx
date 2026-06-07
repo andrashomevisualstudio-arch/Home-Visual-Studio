@@ -56,8 +56,16 @@ export default function RootLayout({
   return (
     <html lang="hu" className={cn(clashDisplay.variable, inter.variable)}>
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+        >
+          Ugrás a tartalomra
+        </a>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

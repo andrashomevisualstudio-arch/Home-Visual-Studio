@@ -91,7 +91,7 @@ export function SiteHeader() {
                     <span className="flex items-center gap-2 text-sm font-medium text-foreground">
                       {service.name}
                       {service.badge && (
-                        <span className="rounded-full bg-foreground px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-background">
+                        <span className="rounded-full bg-primary px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-primary-foreground">
                           {service.badge}
                         </span>
                       )}
@@ -124,14 +124,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button
-            asChild
-            size="sm"
-            className={cn(
-              "hidden sm:inline-flex",
-              onDark && "bg-white text-black hover:bg-white/90"
-            )}
-          >
+          <Button asChild size="sm" className="hidden h-11 px-5 sm:inline-flex">
+
             <Link href="/kapcsolat">
               Ajánlatot kérek
               <ArrowRight />
@@ -144,7 +138,7 @@ export function SiteHeader() {
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className={cn(
-              "inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden",
+              "inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
               onDark ? "text-white" : "text-foreground"
             )}
           >

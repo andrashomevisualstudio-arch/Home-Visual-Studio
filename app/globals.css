@@ -8,7 +8,9 @@
     --foreground: 0 0% 4%;
     --surface: 40 14% 96%;
 
-    --primary: 0 0% 4%;
+    /* Warm terracotta accent — primary CTAs, links, focus rings, highlights
+       (darkened to ~5:1 contrast with white for AA-compliant button text) */
+    --primary: 21 47% 43%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 40 14% 96%;
@@ -25,7 +27,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 88%;
-    --ring: 0 0% 4%;
+    --ring: 21 47% 43%;
 
     --radius: 0.75rem;
   }
@@ -54,6 +56,19 @@
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+/* Respect users who prefer reduced motion: neutralize CSS transitions/animations.
+   (JS-driven particles are additionally guarded inside the Sparkles component.) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

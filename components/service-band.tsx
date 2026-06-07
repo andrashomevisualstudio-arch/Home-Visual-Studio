@@ -48,13 +48,13 @@ export function ServiceBand({
       <div className="relative z-10 mx-auto flex w-full max-w-8xl items-end justify-between gap-6 px-6 pb-8 lg:px-10 lg:pb-12">
         <div>
           {badge && (
-            <span className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white backdrop-blur">
+            <span className="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-primary-foreground">
               ★ {badge}
             </span>
           )}
-          <h3 className="display-xl text-[clamp(2.25rem,7vw,5.5rem)] uppercase text-white">
+          <h2 className="display-xl text-[clamp(2.25rem,7vw,5.5rem)] uppercase text-white">
             {title}
-          </h3>
+          </h2>
           {tagline && (
             <p className="mt-2 max-w-md text-sm text-white/80 sm:text-base">
               {tagline}

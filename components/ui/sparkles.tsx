@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 
 type ParticlesProps = {
   id?: string;
@@ -30,13 +30,15 @@ export const SparklesCore = (props: ParticlesProps) => {
     particleDensity,
   } = props;
   const [init, setInit] = useState(false);
+  const reduceMotion = useReducedMotion();
   useEffect(() => {
+    if (reduceMotion) return;
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
-  }, []);
+  }, [reduceMotion]);
   const controls = useAnimation();
 
   const particlesLoaded = async (container?: Container) => {
@@ -51,6 +53,12 @@ export const SparklesCore = (props: ParticlesProps) => {
   };
 
   const generatedId = useId();
+
+  // Reduced-motion users get a calm static background instead of moving particles.
+  if (reduceMotion) {
+    return <div aria-hidden className={cn(className)} />;
+  }
+
   return (
     <motion.div animate={controls} className={cn("opacity-0", className)}>
       {init && (

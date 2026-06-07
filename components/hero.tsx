@@ -50,11 +50,7 @@ export function Hero() {
           Profi fotózás, videó és digitális megoldások ingatlanosoknak.
         </p>
 
-        <Button
-          asChild
-          size="lg"
-          className="mt-9 bg-white text-black hover:bg-white/90"
-        >
+        <Button asChild size="lg" className="mt-9">
           <Link href="/kapcsolat">
             Ajánlatot kérek
             <ArrowRight />

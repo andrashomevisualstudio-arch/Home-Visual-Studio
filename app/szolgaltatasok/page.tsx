@@ -65,9 +65,9 @@ export default function ServicesPage() {
 
             <div className="mx-auto grid max-w-8xl gap-10 px-6 py-14 lg:grid-cols-[1.4fr_1fr] lg:gap-20 lg:px-10 lg:py-20">
               <div>
-                <h2 className="font-display text-2xl font-semibold sm:text-3xl">
+                <h3 className="font-display text-2xl font-semibold sm:text-3xl">
                   {service.name}
-                </h2>
+                </h3>
                 <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                   {service.description}
                 </p>
@@ -104,9 +104,9 @@ export default function ServicesPage() {
             {service.slug === "ai-fotozas" && (
               <div className="bg-surface py-16 lg:py-24">
                 <div className="mx-auto max-w-8xl px-6 lg:px-10">
-                  <h2 className="display-xl max-w-2xl text-[clamp(1.875rem,4vw,3rem)]">
+                  <h3 className="display-xl max-w-2xl text-[clamp(1.875rem,4vw,3rem)]">
                     Látványos eredmény, extra teendők nélkül
-                  </h2>
+                  </h3>
                   <p className="mt-4 max-w-xl text-muted-foreground">
                     Húzd el a csúszkát, és nézd meg, mit hoz ki az AI az ingatlanügynök
                     által küldött képekből.
