@@ -27,7 +27,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-8xl flex-col items-center justify-center px-6 py-28 text-center">
         <span className="mb-7 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/55">
           <span className="h-px w-7 bg-white/40" />
-          Ingatlan média ügynökség
+          Ingatlan média ügynökség · Budapest
         </span>
 
         <h1 className="display-xl text-[clamp(2.75rem,8vw,7rem)] text-white">
@@ -47,7 +47,8 @@ export function Hero() {
         </div>
 
         <p className="mt-7 max-w-xl text-lg text-white/70 sm:text-xl">
-          Profi fotózás, videó és digitális megoldások ingatlanosoknak.
+          Professzionális ingatlanfotózás, videó, 360° virtuális bejárás és AI
+          megoldások ingatlanosoknak — Budapesten és az agglomerációban.
         </p>
 
         <Button asChild size="lg" className="mt-9">

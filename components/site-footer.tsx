@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { site } from "@/lib/site";
 
 const NAV = [
   { href: "/szolgaltatasok", label: "Szolgáltatások" },
@@ -26,6 +27,10 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
               Profi fotózás, videó és digitális megoldások ingatlanosoknak.
               Ingatlanod a legjobb formájában.
+            </p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
+              Budapest budai oldala és környéke:{" "}
+              {site.geo.primaryTowns.join(", ")} — {site.geo.radiusLabel}.
             </p>
           </div>
 

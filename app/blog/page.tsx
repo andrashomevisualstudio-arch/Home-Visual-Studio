@@ -4,9 +4,17 @@ import Image from "next/image";
 import { getAllPosts, formatDate } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog — ingatlanfotózás, videó és marketing tippek",
   description:
-    "Tippek, trendek és esettanulmányok az ingatlan média világából — fotózás, videó, AI és marketing ingatlanosoknak.",
+    "Tippek, trendek és esettanulmányok az ingatlan média világából — ingatlanfotózás, videó, AI és marketing ingatlanosoknak Budapesten.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog — ingatlanfotózás, videó és marketing tippek",
+    description:
+      "Tippek és trendek az ingatlan média világából ingatlanosoknak.",
+    url: "/blog",
+    type: "website",
+  },
 };
 
 export default function BlogIndexPage() {

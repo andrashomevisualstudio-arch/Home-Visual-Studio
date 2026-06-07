@@ -2,11 +2,21 @@ import type { Metadata } from "next";
 import { ServiceBand } from "@/components/service-band";
 import { ImageComparison } from "@/components/ui/image-comparison-slider";
 import { services, featurePackage } from "@/lib/services";
+import { JsonLd } from "@/components/json-ld";
+import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Szolgáltatások",
+  title: "Ingatlan média szolgáltatások és árak Budapesten",
   description:
-    "Profi ingatlanfotózás, videó, 360° virtuális bejárás, AI fotózás, hirdetési AI ügynök és landing page megoldások. Áraink és csomagjaink.",
+    "Professzionális ingatlanfotózás (40 000 Ft), videó, 360° virtuális bejárás, AI fotózás, hirdetési AI ügynök és landing page Budapesten. Árak és csomagok egy helyen.",
+  alternates: { canonical: "/szolgaltatasok" },
+  openGraph: {
+    title: "Ingatlan média szolgáltatások és árak Budapesten",
+    description:
+      "Ingatlanfotózás, videó, 360° virtuális bejárás és AI fotózás ingatlanosoknak — árak és csomagok.",
+    url: "/szolgaltatasok",
+    type: "website",
+  },
 };
 
 const aiComparisons = [
@@ -33,6 +43,16 @@ const aiComparisons = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Főoldal", path: "/" },
+            { name: "Szolgáltatások", path: "/szolgaltatasok" },
+          ]),
+          ...services.map((s) => serviceSchema(s)),
+        ]}
+      />
+
       {/* Intro */}
       <section className="mx-auto max-w-8xl px-6 pb-12 pt-20 lg:px-10 lg:pb-16 lg:pt-28">
         <span className="mb-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
@@ -43,8 +63,9 @@ export default function ServicesPage() {
           Minden, amivel az ingatlan eladja önmagát.
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-          A fotótól a videón át a digitális megoldásokig — egy helyen, ingatlanosokra
-          szabva. Minden szolgáltatásunkkal időt és pénzt spórolunk neked.
+          Professzionális ingatlanfotózás, videó és digitális megoldások
+          Budapesten és az agglomerációban — egy helyen, ingatlanosokra szabva.
+          Minden szolgáltatásunkkal időt és pénzt spórolunk neked.
         </p>
       </section>
 

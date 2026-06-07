@@ -5,6 +5,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
+import { site, keywords } from "@/lib/site";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const clashDisplay = localFont({
   src: [
@@ -24,29 +27,55 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://homevisualstudio.com"),
+  metadataBase: new URL(site.url),
   title: {
-    default: "Home Visual Studio — Ingatlan média & digitális megoldások",
+    default:
+      "Ingatlanfotózás & ingatlan média Budapesten | Home Visual Studio",
     template: "%s | Home Visual Studio",
   },
   description:
-    "Profi ingatlanfotózás, videó, 360° virtuális bejárás, AI fotózás és digitális megoldások ingatlanosoknak. Ingatlanod a legjobb formájában.",
-  keywords: [
-    "ingatlanfotózás",
-    "ingatlan videó",
-    "360 fokos virtuális bejárás",
-    "AI fotózás",
-    "ingatlan marketing",
-    "Home Visual Studio",
-  ],
+    "Professzionális ingatlanfotózás, videó, 360° virtuális bejárás és AI fotózás Budapesten és az agglomerációban. Ingatlanod a legjobb formájában — gyors, 24–48 órás átfutással.",
+  keywords,
+  authors: [{ name: site.founder }],
+  creator: site.name,
+  publisher: site.name,
+  alternates: {
+    canonical: "/",
+  },
+  category: "Ingatlan média",
+  formatDetection: { telephone: true, email: true, address: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "hu_HU",
-    siteName: "Home Visual Studio",
-    title: "Home Visual Studio — Ingatlan média & digitális megoldások",
+    siteName: site.name,
+    title: "Ingatlanfotózás & ingatlan média Budapesten | Home Visual Studio",
     description:
-      "Profi fotózás, videó és digitális megoldások ingatlanosoknak.",
-    url: "https://homevisualstudio.com",
+      "Professzionális ingatlanfotózás, videó, 360° virtuális bejárás és AI fotózás ingatlanosoknak — Budapesten és az agglomerációban.",
+    url: site.url,
+    images: [
+      {
+        url: site.ogImage,
+        alt: "Home Visual Studio — professzionális ingatlanfotózás Budapesten",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ingatlanfotózás & ingatlan média Budapesten | Home Visual Studio",
+    description:
+      "Professzionális ingatlanfotózás, videó, 360° virtuális bejárás és AI fotózás ingatlanosoknak — Budapesten és az agglomerációban.",
+    images: [site.ogImage],
   },
 };
 
@@ -56,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="hu" className={cn(clashDisplay.variable, inter.variable)}>
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"

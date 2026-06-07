@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPostSlugs, getPostBySlug, formatDate } from "@/lib/posts";
+import { JsonLd } from "@/components/json-ld";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
@@ -20,10 +22,13 @@ export function generateMetadata({
   return {
     title: post.meta.title,
     description: post.meta.excerpt,
+    alternates: { canonical: `/blog/${post.meta.slug}` },
     openGraph: {
       title: post.meta.title,
       description: post.meta.excerpt,
       type: "article",
+      url: `/blog/${post.meta.slug}`,
+      publishedTime: post.meta.date || undefined,
       images: post.meta.coverImage ? [post.meta.coverImage] : undefined,
     },
   };
@@ -39,6 +44,16 @@ export default function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
+      <JsonLd
+        data={[
+          blogPostingSchema(post.meta),
+          breadcrumbSchema([
+            { name: "Főoldal", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.meta.title, path: `/blog/${post.meta.slug}` },
+          ]),
+        ]}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
