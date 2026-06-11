@@ -85,3 +85,22 @@ Tartalom Markdownban…
 
 ## Audit status (ui-ux-pro-max + web guidelines)
 Done: accessibility (prefers-reduced-motion guard incl. sparkles, skip-link, 44px touch targets, input focus rings, required markers + inline validation with focus-on-first-error, fixed heading hierarchy), terracotta accent, honest conversion sections. Build passes clean.
+
+## SEO/UI upgrade round (Fable 5 review)
+- **SEO infra:** `lib/site.ts` (central config incl. Budaörs geo + area towns), `lib/schema.ts`
+  (Organization/LocalBusiness, WebSite, Service, Breadcrumb, BlogPosting, **FAQPage**),
+  `app/robots.ts` (AI crawlers welcomed), `app/sitemap.ts`, `public/llms.txt`.
+- **FAQ:** content in `lib/faq.ts` (single source for accordion + JSON-LD); accordion in
+  `components/faq.tsx` (native details/summary). Edit answers there — keep them TRUE.
+- **Coverage section:** `components/coverage.tsx` — local-SEO content block (town names) +
+  radius graphic. Towns come from `lib/site.ts` → `geo.areaServed`.
+- **OG image:** static `public/og.png` (1200×630). Regenerate by editing `og-card.html`
+  (project root) and running headless Edge:
+  `msedge --headless=new --window-size=1200,630 --screenshot=public\og.png og-card.html`
+  (@vercel/og was removed — it crashes on the non-ASCII Windows path at build time.)
+- **Perf:** sparkles lazy-loaded via `components/hero-sparkles.tsx` (`next/dynamic`, ssr:false)
+  → home First-Load JS 199 kB → 116 kB.
+- **UI:** scroll-reveal (`components/reveal.tsx`), hero stagger + dual CTA + scroll cue,
+  numbered service bands, 4-column footer with service links.
+- **Ranking #1 needs off-page too:** Google Business Profile (Budaörs service-area),
+  GSC + sitemap submit, local directories/backlinks, real reviews, fresh blog posts.

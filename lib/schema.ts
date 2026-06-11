@@ -127,6 +127,21 @@ export function breadcrumbSchema(
   };
 }
 
+/** FAQPage node — drives FAQ rich results + answers for AI search engines. */
+export function faqSchema(
+  items: { question: string; answer: string }[]
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
 /** BlogPosting node for individual articles. */
 export function blogPostingSchema(post: PostMeta): Record<string, unknown> {
   return {

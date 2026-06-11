@@ -66,7 +66,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: site.ogImage,
-        alt: "Home Visual Studio — professzionális ingatlanfotózás Budapesten",
+        width: 1200,
+        height: 630,
+        alt: "Home Visual Studio — professzionális ingatlanfotózás Budapesten és Budaörsön",
       },
     ],
   },

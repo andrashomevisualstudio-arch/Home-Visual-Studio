@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face {
+    font-family: "Clash Display";
+    src: url("./app/fonts/ClashDisplay-600.woff2") format("woff2");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "Clash Display";
+    src: url("./app/fonts/ClashDisplay-500.woff2") format("woff2");
+    font-weight: 500;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #0A0A0A;
+    color: #fff;
+    font-family: "Clash Display", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 72px;
+    overflow: hidden;
+    position: relative;
+  }
+  .stars span {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,.55);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .eyebrow::before { content: ""; width: 48px; height: 2px; background: #A05E3A; }
+  h1 {
+    font-size: 108px;
+    font-weight: 600;
+    line-height: .98;
+    letter-spacing: -2px;
+  }
+  .beam {
+    margin-top: 26px;
+    width: 560px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    filter: blur(.4px);
+  }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .brand { font-size: 34px; font-weight: 600; }
+  .tags { font-size: 26px; color: rgba(255,255,255,.6); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true">
+    <span style="left:140px;top:90px;width:3px;height:3px"></span>
+    <span style="left:420px;top:150px;width:2px;height:2px"></span>
+    <span style="left:980px;top:110px;width:3px;height:3px"></span>
+    <span style="left:1100px;top:300px;width:2px;height:2px"></span>
+    <span style="left:860px;top:210px;width:2px;height:2px"></span>
+    <span style="left:300px;top:480px;width:2px;height:2px"></span>
+    <span style="left:1040px;top:520px;width:3px;height:3px"></span>
+    <span style="left:620px;top:80px;width:2px;height:2px"></span>
+    <span style="left:80px;top:380px;width:2px;height:2px"></span>
+  </div>
+  <div class="eyebrow">Ingatlan média ügynökség · Budapest &amp; Budaörs</div>
+  <div>
+    <h1>Ingatlanod.<br>Legjobb formájában.</h1>
+    <div class="beam"></div>
+  </div>
+  <div class="bottom">
+    <div class="brand">Home Visual Studio</div>
+    <div class="tags">Fotó · Videó · 360° · AI</div>
+  </div>
+</body>
+</html>

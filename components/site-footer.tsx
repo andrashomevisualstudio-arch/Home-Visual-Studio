@@ -1,22 +1,21 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { services } from "@/lib/services";
 
 const NAV = [
   { href: "/szolgaltatasok", label: "Szolgáltatások" },
   { href: "/blog", label: "Blog" },
   { href: "/kapcsolat", label: "Kapcsolat" },
+  { href: "/#gyik", label: "Gyakori kérdések" },
 ];
-
-const EMAIL = "andras.homevisualstudio@gmail.com";
-const PHONE = "+36 30 793 0356";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-8xl px-6 py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_0.8fr_1fr]">
           <div>
             <Link
               href="/"
@@ -25,13 +24,34 @@ export function SiteFooter() {
               Home Visual Studio
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
-              Profi fotózás, videó és digitális megoldások ingatlanosoknak.
-              Ingatlanod a legjobb formájában.
+              Professzionális ingatlanfotózás, videó és digitális megoldások
+              ingatlanosoknak. Ingatlanod a legjobb formájában.
             </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
-              Budapest budai oldala és környéke:{" "}
-              {site.geo.primaryTowns.join(", ")} — {site.geo.radiusLabel}.
+            <p className="mt-4 inline-flex max-w-xs items-start gap-2 text-sm leading-relaxed text-background/60">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-background/40" />
+              <span>
+                {site.geo.city} · {site.geo.primaryTowns.join(", ")} —{" "}
+                {site.geo.radiusLabel}
+              </span>
             </p>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-medium uppercase tracking-[0.18em] text-background/50">
+              Szolgáltatások
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/szolgaltatasok#${s.slug}`}
+                    className="text-sm text-background/80 transition-colors hover:text-background"
+                  >
+                    {s.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
@@ -59,22 +79,27 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-3">
               <li>
                 <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center gap-1 text-sm text-background/80 transition-colors hover:text-background"
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center gap-2 text-sm text-background/80 transition-colors hover:text-background"
                 >
-                  {EMAIL}
+                  <Mail className="size-4 text-background/40" />
+                  {site.email}
                   <ArrowUpRight className="size-3.5" />
                 </a>
               </li>
               <li>
                 <a
-                  href={`tel:${PHONE.replace(/\s/g, "")}`}
-                  className="text-sm text-background/80 transition-colors hover:text-background"
+                  href={`tel:${site.phoneE164}`}
+                  className="inline-flex items-center gap-2 text-sm text-background/80 transition-colors hover:text-background"
                 >
-                  {PHONE}
+                  <Phone className="size-4 text-background/40" />
+                  {site.phone}
                 </a>
               </li>
             </ul>
+            <p className="mt-6 text-xs leading-relaxed text-background/45">
+              Ajánlatkérésre 24 órán belül válaszolunk.
+            </p>
           </div>
         </div>
 

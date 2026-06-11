@@ -10,8 +10,8 @@ export const site = {
   url: "https://homevisualstudio.com",
   /** Short tagline used across metadata. */
   tagline: "Ingatlanod a legjobb formájában.",
-  /** Default social/OG share image (1200×630 recommended — see TODO below). */
-  ogImage: "/images/property/property-05.webp",
+  /** Branded 1200×630 share card (regenerate from og-card.html if needed). */
+  ogImage: "/og.png",
 
   email: "andras.homevisualstudio@gmail.com",
   phone: "+36 30 793 0356",

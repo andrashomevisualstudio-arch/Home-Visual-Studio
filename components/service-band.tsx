@@ -11,7 +11,8 @@ type ServiceBandProps = {
   badge?: string;
   /** object-position for the background image (default "center"). */
   imagePosition?: string;
-  /** Index, used to vary the focal point a little. */
+  /** 1-based position — rendered as an editorial "01" index. */
+  index?: number;
   priority?: boolean;
   className?: string;
 };
@@ -23,6 +24,7 @@ export function ServiceBand({
   href,
   badge,
   imagePosition = "center",
+  index,
   priority,
   className,
 }: ServiceBandProps) {
@@ -45,6 +47,15 @@ export function ServiceBand({
       {/* Legibility overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-black/10" />
 
+      {typeof index === "number" && (
+        <span
+          aria-hidden
+          className="absolute right-6 top-6 z-10 font-display text-sm font-medium tracking-[0.18em] text-white/55 lg:right-10 lg:top-8"
+        >
+          {String(index).padStart(2, "0")}
+        </span>
+      )}
+
       <div className="relative z-10 mx-auto flex w-full max-w-8xl items-end justify-between gap-6 px-6 pb-8 lg:px-10 lg:pb-12">
         <div>
           {badge && (
@@ -63,8 +74,8 @@ export function ServiceBand({
         </div>
 
         {href && (
-          <span className="hidden size-14 shrink-0 items-center justify-center rounded-full border border-white/40 text-white transition-colors group-hover:bg-white group-hover:text-black sm:flex">
-            <ArrowUpRight className="size-6" />
+          <span className="hidden size-14 shrink-0 items-center justify-center rounded-full border border-white/40 text-white transition-all duration-300 group-hover:border-white group-hover:bg-white group-hover:text-black sm:flex">
+            <ArrowUpRight className="size-6 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         )}
       </div>

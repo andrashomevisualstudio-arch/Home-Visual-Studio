@@ -64,9 +64,16 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "scroll-line": {
+          "0%": { transform: "scaleY(0)", transformOrigin: "top" },
+          "45%": { transform: "scaleY(1)", transformOrigin: "top" },
+          "55%": { transform: "scaleY(1)", transformOrigin: "bottom" },
+          "100%": { transform: "scaleY(0)", transformOrigin: "bottom" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.7s cubic-bezier(0.22,0.68,0,1) both",
+        "scroll-line": "scroll-line 2.2s cubic-bezier(0.65,0,0.35,1) infinite",
       },
     },
   },
